@@ -22,3 +22,20 @@ const words = [
   "loving",
   "north",
 ];
+const correctWord = words [Math.floor(Math.random() * 19)];
+
+let guess = document.querySelector;
+
+function addWordToDOM () {
+  let guess = document.querySelector("input");
+  if guess.addEventListener("keypress", function (evt) {
+    if (evt.key === "Enter") {
+      
+    }
+  })
+}
+
+function updateScore () {
+  let score = 0;
+  if correctWord
+}
