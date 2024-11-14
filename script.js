@@ -1,5 +1,11 @@
 // Variables for the DOM elements
-
+const guess = document.querySelector("input");
+let correctWord;
+const timer = document.getElementById("time");
+let time = timer.textContent;
+time = time.replace("s", ""); 
+time = parseInt(time);
+const scoreMsg = document.getElementById("score");
 // Array
 const words = [
   "dependent",
@@ -22,20 +28,38 @@ const words = [
   "loving",
   "north",
 ];
-const correctWord = words [Math.floor(Math.random() * 19)];
 
-let guess = document.querySelector;
 
-function addWordToDOM () {
-  let guess = document.querySelector("input");
-  if guess.addEventListener("keypress", function (evt) {
-    if (evt.key === "Enter") {
-      
-    }
-  })
+function addWordToDOM() {
+  correctWord = words[Math.floor(Math.random() * 19)];
+  console.log(correctWord);
+}
+function updateScore() {
+  let score = parseInt(scoreMsg.textContent);
+  score++;
+  scoreMsg.textContent = score;
+}
+function updateTime () {
+  time --;
+  timer.textContent = `${time}s`
+  if (time <= 0) {
+    clearInterval(timeout);
+    gameOver();
+  }
+}
+function gameOver () {
+
 }
 
-function updateScore () {
-  let score = 0;
-  if correctWord
-}
+//execute
+addWordToDOM();
+const timeout = setInterval(updateTime, 1000);
+
+guess.addEventListener("input", function (e) {
+  if (this.value === correctWord) {
+    updateScore ();
+    addWordToDOM ();
+    time += 5;
+    this.value = "";
+  }
+});
