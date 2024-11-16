@@ -131,3 +131,14 @@ input {
   height: 100%;
   z-index: 1;
 }
+
+h3 {
+  margin-bottom: 40px;
+  font-family: "Righteous", cursive;
+  font-size: 80px;
+  color: #ffde17;
+}
+
+.hide {
+  display: none;
+}
