@@ -10,9 +10,8 @@ const scoreMsg = document.getElementById("score");
 const gameOverContainer = document.getElementById("end-game-container");
 const settingsBtn = document.getElementById("settings-btn");
 const settings = document.getElementById("settings");
-const difficulty = document.getElementById("difficulty")
-console.dir(difficulty);
-let timeIncrement;
+const difficulty = document.querySelector("option");
+let timeIncrement = 5;
 
 // Array
 const words = [
@@ -73,21 +72,28 @@ function gameOver() {
   gameOverTextGeneration();
   restartBtnGeneration();
 }
-/* function difficultyChange () {
-  if difficulty.option = "0" {
-    timeIncrement = 5;
-    return;
-  }
-  if difficulty.option = "1" {
+//I couldn't figure out how to select the different options, I only got syntax errors with the method I was
+//trying now. Also tried to do event listners but since the options don't have classes/IDs I couldn't target them.
+
+/* function difficultyChange() {
+  time = 10;
+  if difficulty.value = "medium" {
     timeIncrement = 3;
     return;
   }
-  timeIncrement = 1;
+  if difficulty.value = "hard" {
+    timeIncrement = 1;
+    return;
+  }
 } */
+
 //execute
 addWordToDOM();
+/* difficulty.addEventListener ("click", () => {
+  difficultyChange();
+}); */
 const timeout = setInterval(updateTime, 1000);
-/* difficultyChange (); */
+
 
 guess.addEventListener("input", function (e) {
   if (this.value === correctWord) {
@@ -98,6 +104,6 @@ guess.addEventListener("input", function (e) {
   }
 });
 
-settingsBtn.addEventListener("click", function (e) {
+settingsBtn.addEventListener("click", () => {
   settings.classList.toggle("hide");
-})
+});
